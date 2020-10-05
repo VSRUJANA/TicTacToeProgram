@@ -18,7 +18,7 @@ namespace TicTacToeGame
         public void ChooseLetter()
         {
             Console.WriteLine("Choose a letter - X or O");
-            char playerLetter = Console.ReadKey().KeyChar;
+            char playerLetter = char.ToUpper(Console.ReadLine()[0]);
             if (playerLetter == 'O' || playerLetter == 'X')
             {
                 char computerLetter = (playerLetter == 'O') ? 'X' : 'O';
