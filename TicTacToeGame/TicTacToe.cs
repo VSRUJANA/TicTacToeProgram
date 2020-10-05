@@ -31,7 +31,7 @@ namespace TicTacToeGame
             }
             else
             {
-                Console.WriteLine("\nChoose a valid letter!");
+                Console.WriteLine("\nChoose a valid letter! ");
                 ChooseLetter();
             }
             letter = playerLetter;
