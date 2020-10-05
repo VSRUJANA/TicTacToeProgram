@@ -6,6 +6,8 @@ namespace TicTacToeGame
 {
     class TicTacToe
     {
+        public char[] board;
+        
         public char[] CreateBoard()
         {
             char[] board = new char[10];
@@ -27,6 +29,21 @@ namespace TicTacToeGame
             }
             else
                 Console.WriteLine("\nChoose a valid letter!");
+        }
+        public void ShowBoard()
+        {
+            char[] board = new char[10];
+            Console.Write("\n| ");
+            for (int i = 1; i <10; i++)
+            {
+                Console.Write(board[i] + " | ");
+                if (i % 3 == 0 && i != 9)
+                {
+                    Console.WriteLine("\n+--+--+--+");
+                    Console.Write("| ");
+                }
+            }
+
         }
 
     }
