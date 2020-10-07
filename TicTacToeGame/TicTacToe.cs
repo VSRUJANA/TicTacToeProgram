@@ -6,13 +6,15 @@ namespace TicTacToeGame
 {
     class TicTacToe
     {
+        //constants
+        public const int HEAD = 1;
+        public const int TAIL = 0;
+        //variables
         public static char[] board = new char[10];
-        static int index = 0;
-        static int i = 0;
         public static char letter;
+        public enum Player { USER, COMPUTER };
         public char[] CreateBoard()
         {
-            //char[] board = new char[10];
             for (int i = 1; i < 10; i++)
             {
                 board[i] = ' ';
@@ -26,8 +28,10 @@ namespace TicTacToeGame
             if (playerLetter == 'O' || playerLetter == 'X')
             {
                 char computerLetter = (playerLetter == 'O') ? 'X' : 'O';
-                Console.WriteLine("\nPlayer's choice: " + playerLetter);
+                Console.WriteLine("------------------------");
+                Console.WriteLine("Player's choice: " + playerLetter);
                 Console.WriteLine("computer's choice: " + computerLetter);
+                Console.WriteLine("------------------------");
             }
             else
             {
@@ -53,7 +57,7 @@ namespace TicTacToeGame
         public void MakeMove()
         {
             Console.WriteLine(" \nChoose an index from 1 to 9 ");
-            index = Int32.Parse(Console.ReadLine());
+            int index = Int32.Parse(Console.ReadLine());
             if (index > 0 && index <= 9)
             {
                 if (board[index] != ' ')
@@ -71,6 +75,12 @@ namespace TicTacToeGame
                 Console.WriteLine("The index chosen is invalid! choose a number between 1 to 9");
                 MakeMove();
             }
+        }
+        public Player Toss()
+        {
+            Random random = new Random();
+            int toss = random.Next(0, 2);
+            return (toss == HEAD) ? Player.USER : Player.COMPUTER;
         }
     }
 }
