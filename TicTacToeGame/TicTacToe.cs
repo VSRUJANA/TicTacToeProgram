@@ -136,6 +136,26 @@ namespace TicTacToeGame
             }
             return false;
         }
+        public int GetComputerMove(char computerLetter)
+        {
+            int winningMove = GetWinningMove(computerLetter);
+            return winningMove;
+        }
+        public int GetWinningMove(char computerLetter)
+        {
+            for (int i = 1; i < 10; i++)
+            {
+                if (board[i]==' ')
+                {
+                    MakeMove();
+                    if (CheckWinner(computerLetter))
+                        return i;
+                    else
+                        board[i] = ' ';
+                }
+            }
+            return 0;
+        }
     }
 }
 
