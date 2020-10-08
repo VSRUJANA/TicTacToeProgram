@@ -8,11 +8,10 @@ namespace TicTacToeGame
         {
             var t = new TicTacToe();
             char[] board = t.CreateBoard();
-            t.ChooseLetter();
-            Console.WriteLine(t.Toss()+ " won the toss and will start the game");
-            t.MakeMove();
-            t.ShowBoard();
-            
+            char letter = t.ChooseLetter();
+            t.Toss();
+            t.Play();
+            Console.WriteLine("\nCheck if won : " + t.CheckWinner(letter));
         }
     }
 }
