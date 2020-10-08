@@ -9,9 +9,8 @@ namespace TicTacToeGame
             var t = new TicTacToe();
             char[] board = t.CreateBoard();
             char letter = t.ChooseLetter();
-            t.Toss();
+            int toss=t.Toss();
             t.Play();
-            Console.WriteLine("\nCheck if won : " + t.CheckWinner(letter));
         }
     }
 }

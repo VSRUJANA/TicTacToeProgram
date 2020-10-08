@@ -65,7 +65,7 @@ namespace TicTacToeGame
         }
         public void MakeMove()
         {
-            Console.WriteLine(" \nChoose an index from 1 to 9 ");
+            Console.WriteLine(" \nUsers turn : Choose an index from 1 to 9 ");
             int index = Int32.Parse(Console.ReadLine());
             if (index > 0 && index <= 9)
             {
@@ -103,15 +103,58 @@ namespace TicTacToeGame
         {
             if (toss == 1)
             {
-                MakeMove();
-                ShowBoard();
+                int temp;
+                while (true)
+                {
+                    MakeMove();
+                    ShowBoard();
+                    if (CheckWinner(letter) || CheckDraw())
+                    {
+                        temp = 1;
+                        break;
+                    }
+                    ComputerMove();
+                    Console.WriteLine("\nComputers turn :");
+                    ShowBoard();
+                    if (CheckWinner(letter) || CheckDraw())
+                    {
+                        temp = 0;
+                        break;
+                    }
+                }
+                if (temp == 0)
+                    Console.WriteLine("\nComputer won");
+                else
+                    Console.WriteLine("\nUser won");
             }
             else
             {
-                ComputerMove();
-                ShowBoard();
+                int temp;
+                while (true)
+                {
+                    ComputerMove();
+                    Console.WriteLine("\nComputers turn :");
+                    ShowBoard();
+                    if (CheckWinner(letter) || CheckDraw())
+                    {
+                        temp = 0;
+                        break;
+                    }
+                    MakeMove();
+                    ShowBoard();
+                    if (CheckWinner(letter) || CheckDraw())
+                    {
+                        temp = 1;
+                        break;
+                    }
+                }
+                if (temp == 0)
+                    Console.WriteLine("\nComputer won");
+                else
+                    Console.WriteLine("\nUser won");
             }
         }
+
         public bool CheckWinner(char playerLetter)
         {
             return ((board[1] == playerLetter && board[2] == playerLetter && board[3] == playerLetter) ||
@@ -145,7 +188,7 @@ namespace TicTacToeGame
         {
             for (int i = 1; i < 10; i++)
             {
-                if (board[i]==' ')
+                if (board[i] == ' ')
                 {
                     MakeMove();
                     if (CheckWinner(computerLetter))
@@ -156,6 +199,7 @@ namespace TicTacToeGame
             }
             return 0;
         }
+
     }
 }
 
